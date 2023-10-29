@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="questions.css">
+    <title>Quiz App</title>
+</head>
+<body>
+    <div id="quiz-container">
+        <div id="question-container">
+            <h1>Pytanie</h1>
+            <p id="question"></p>
+            <form id="options-form">
+                <input type="radio" name="answer" id="option1">
+                <label for="option1" id="label1"></label>
+                <br>
+                <input type="radio" name="answer" id="option2">
+                <label for="option2" id="label2"></label>
+                <br>
+                <input type="radio" name="answer" id="option3">
+                <label for="option3" id="label3"></label>
+                <br>
+                <input type="radio" name="answer" id="option4">
+                <label for="option4" id="label4"></label>
+                <br>
+                <button id="back-button">Cofnij</button> <button type="submit" id="next-button">Dalej</button>   
+            </form>
+        </div>
+        <div id="result-container">
+            
+            <h2>Wynik: <span id="result">0</span></h2>
+            <button id="view-answers-button">Zobacz odpowiedzi</button>
+
+            <button id="retry-button">Spróbuj ponownie</button>
+        </div>
+        <p id="answersContainer"></p>
+    </div>
+   
+
+    <div class = "top-right" >
+        <a href="https://vistula.edu.pl/" target="_blank">
+        <img src = "vistula.png" alt = "vistula" width = "150" height = "150"/>
+    </a>
+    
+    <script src="questions.js"></script>
+</body>
+</html>
