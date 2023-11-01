@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="questions.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <title>Quiz App</title>
 </head>
 <body>
     <div id="quiz-container">
         <div id="question-container">
-            <h1>Pytanie</h1>
+            <h1 id="question-number">Pytanie 1</h1>
             <p id="question"></p>
             <form id="options-form">
                 <input type="radio" name="answer" id="option1">
@@ -33,6 +34,9 @@
             <button id="view-answers-button">Zobacz odpowiedzi</button>
 
             <button id="retry-button">Spróbuj ponownie</button>
+
+            <button id="download-certificate-button">Pobierz Certyfikat</button>
+
         </div>
         <p id="answersContainer"></p>
     </div>
@@ -42,7 +46,7 @@
         <a href="https://vistula.edu.pl/" target="_blank">
         <img src = "vistula.png" alt = "vistula" width = "150" height = "150"/>
     </a>
-    
     <script src="questions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </body>
 </html>
