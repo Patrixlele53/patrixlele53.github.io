@@ -1,10 +1,9 @@
-// script.js
 window.jsPDF = window.jspdf.jsPDF;
 const questions = [
     {
         question: "Kiedy zostal uruchomiony pierwszy serwer WWW?",
         options: ["a) 1989", "b) 1990", "c) 1993", "d) 1995"],
-        correctAnswer: 1, // Indeks poprawnej odpowiedzi (liczone od 0)
+        correctAnswer: 1,
     },
     {
         question: "Kto uwazany jest za tworce World Wide Web?",
@@ -227,8 +226,8 @@ function showAnswers() {
     const answerStrings = questions.map((q, index) => {
         currentQuestionNumber = index + 1;
         const correctAnswer = q.options[q.correctAnswer];
-        const userAnswerIndex = userAnswers[index]; // Pobierz indeks odpowiedzi użytkownika
-        const userAnswer = q.options[userAnswerIndex]; // Pobierz odpowiedź użytkownika
+        const userAnswerIndex = userAnswers[index];
+        const userAnswer = q.options[userAnswerIndex]; 
         const isCorrect = userAnswerIndex === q.correctAnswer;
 
         // Ustaw kolor odpowiedzi użytkownika na zielony (poprawna) lub czerwony (niepoprawna)
@@ -294,7 +293,6 @@ function generateCertificate() {
     let questionsPerPage = 5; // Ilość pytań na jednej stronie
     let questionsCounter = 0; // Licznik pytań na obecnej stronie
 
-    // Dodaj odpowiedzi użytkownika
     for (let i = 0; i < questions.length; i++) {
         const question = questions[i];
         const userAnswerIndex = userAnswers[i];
@@ -304,20 +302,19 @@ function generateCertificate() {
         const userAnswerText = `Twoja odpowiedz: ${userAnswer}`;
 
         doc.text(questionText, 10, yOffset);
-        yOffset += 10; // Zwiększ odstęp między pytaniem a odpowiedzią
+        yOffset += 10; 
         doc.text(userAnswerText, 10, yOffset);
 
         if (!isCorrect) {
-            // Wyświetl poprawną odpowiedź tylko wtedy, gdy odpowiedź użytkownika jest nieprawidłowa
             const correctAnswer = question.options[question.correctAnswer];
-            yOffset += 10; // Zwiększ odstęp między odpowiedzią użytkownika a poprawną odpowiedzią
+            yOffset += 10; 
             doc.text(`Poprawna odpowiedz: ${correctAnswer}`, 10, yOffset);
-            yOffset += 10; // Zwiększ odstęp między poprawną odpowiedzią a następnym pytaniem
+            yOffset += 10; 
         } else {
-            yOffset += 10; // Zwiększ odstęp między odpowiedzią użytkownika a następnym pytaniem (bez wyświetlania poprawnej odpowiedzi)
+            yOffset += 10; 
         }
 
-        // Ustaw kolor wyniku na zielony (poprawna odpowiedź) lub czerwony (nieprawidłowa odpowiedź)
+        // kolor wyniku na zielony (poprawna odpowiedź) lub czerwony (nieprawidłowa odpowiedź)
         if (isCorrect) {
             doc.setTextColor(0, 128, 0); // Zielony
         } else {
@@ -327,22 +324,20 @@ function generateCertificate() {
         doc.setFont("helvetica", "bold");
         doc.text(isCorrect ? "Poprawna odpowiedz" : "Nieprawidlowa odpowiedz", 10, yOffset);
 
-        // Przywróć domyślny kolor tekstu
         doc.setTextColor(0);
         doc.setFont("helvetica", "normal");
-        yOffset += 10; // Zwiększ ogólny odstęp między wynikami
+        yOffset += 10; 
 
         questionsCounter++;
 
         // Jeśli osiągnięto limit pytań na stronie, przejdź do nowej strony
         if (questionsCounter >= questionsPerPage && i < questions.length - 1) {
             doc.addPage();
-            yOffset = 10; // Resetuj pozycję dla nowej strony
+            yOffset = 10; 
             questionsCounter = 0;
         }
     }
 
-    // Zapisz PDF
     doc.save("certyfikat.pdf");
 }
 
